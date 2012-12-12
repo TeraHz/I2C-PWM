@@ -1,5 +1,6 @@
 #ifndef _PCA9685_H
 #define _PCA9685_H
+#include <inttypes.h>
 
 // Register Definitions
 
@@ -9,6 +10,7 @@
 #define SUBADR2 0x03		//I2C-bus subaddress 2
 #define SUBADR3 0x04		//I2C-bus subaddress 3
 #define ALLCALLADR 0x05     //LED All Call I2C-bus address
+#define LED0 0x6			//LED0 start register
 #define LED0_ON_L 0x6		//LED0 output and brightness control byte 0
 #define LED0_ON_H 0x7		//LED0 output and brightness control byte 1
 #define LED0_OFF_L 0x8		//LED0 output and brightness control byte 2
@@ -20,20 +22,24 @@
 #define ALLLED_OFF_H 0xFD	//load all the LEDn_OFF registers, byte 1 (turn 8-15 channels off)
 #define PRE_SCALE 0xFE		//prescaler for output frequency
 #define CLOCK_FREQ 25000000 //25MHz default osc clock
+#define BUFFER_SIZE 0x80  //1 byte buffer
+
 class PCA9685 {
 public:
-	PCA9685(int, int);
+	PCA9685(int,int);
 	virtual ~PCA9685();
 	void reset(void);
 	void setPWMFreq(int);
-	void setPWM(int, int, int);
-	void setPWM(int, int);
+	void setPWM(uint8_t, int, int);
+	void setPWM(uint8_t, int);
 private:
 	int _i2caddr;
 	int _i2cbus;
+	char busfile[64];
+	uint8_t dataBuffer[BUFFER_SIZE];
+	uint8_t read_byte(uint8_t);
+	void write_byte(uint8_t, uint8_t);
 
-	char read_byte(char);
-	void write_byte(char, char);
 
 };
 #endif
