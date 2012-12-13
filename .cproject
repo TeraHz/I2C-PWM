@@ -43,9 +43,11 @@
 								<option id="gnu.cpp.link.option.libs.124677427" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="PCA9685"/>
 								</option>
-								<option id="gnu.cpp.link.option.paths.2091641772" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+								<option id="gnu.cpp.link.option.paths.2091641772" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/PCA9685/Debug}&quot;"/>
 								</option>
+								<option id="gnu.cpp.link.option.flags.1161630058" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-Wl,-rpath,'$$ORIGIN'/lib" valueType="string"/>
+								<option id="gnu.cpp.link.option.other.521960413" name="Other options (-Xlinker [option])" superClass="gnu.cpp.link.option.other" valueType="stringList"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.564456906" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
